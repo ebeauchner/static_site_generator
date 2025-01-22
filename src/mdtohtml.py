@@ -43,3 +43,16 @@ def text_to_children(text):
         return LeafNode("blockquote", text.replace(">",""))
     else:
         raise Exception("Invalid text")
+
+#get the h1 Title out of MD
+def extract_title(markdown):
+    title_leafnode = None
+    blocks = markdown_to_block(markdown)
+    for block in blocks:
+        block_textnodes = text_to_textnodes(block)
+        for textnode in block_textnodes:
+            if block_to_block_type(textnode.text) == "Heading 1 Block":
+                title_leafnode = text_to_children(textnode.text)
+    if title_leafnode == None:
+        raise Exception("no h1 header present")
+    return title_leafnode.value                
