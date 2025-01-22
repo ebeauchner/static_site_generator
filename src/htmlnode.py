@@ -16,15 +16,7 @@ class HTMLNode:
         return " ".join(attr_list)
     
     def __repr__(self):
-        print("************************************")
-        print("\n")
-        print(f"**** HTML Node tag: {self.tag} ****")
-        print(f"**** HTML Node value: {self.value} ****")
-        print(f"**** HTML Node children: {self.children} ****")
-        print(f"**** HTML Node props: {self.props} ****")
-        print("\n")        
-        print("************************************")
-        return None
+        return "HTMLNode(tag: " + str(self.tag) + ", value= " + str(self.value) + ", children= " + str(self.children) + ", props= " + str(self.props) + ")"
     
 class LeafNode(HTMLNode):
     def __init__(self, tag, value, props=None):
